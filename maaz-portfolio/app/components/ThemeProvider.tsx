@@ -12,7 +12,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,14 +23,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
-    } else if (systemPrefersLight) {
-      // If no saved theme and system prefers light, default to dark anyway per current vibe, 
-      // but user can override. We'll default to dark as the base state.
-      setTheme("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      setTheme("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
+      setTheme("light");
+      document.documentElement.setAttribute("data-theme", "light");
     }
   }, []);
 
