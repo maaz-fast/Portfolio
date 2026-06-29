@@ -70,28 +70,57 @@ export default function Skills() {
           })}
         </div>
 
-        {/* Tool badges */}
-        <div className="mt-12">
-          <p className="font-mono text-xs tracking-widest mb-4" style={{ color: "var(--muted)" }}>
-            // tools I work with
+        {/* Tools I Work With */}
+        <div className="mt-16 pt-8 border-t" style={{ borderColor: "var(--border2)" }}>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] mb-6" style={{ color: "var(--accent)" }}>
+            Core Toolset
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
-              "Playwright", "Selenium", "Postman", "K6", "Jira", "Trello",
-              "Docker", "SQL", "Beekeeper", "JavaScript", "C#", "Swagger",
-              "Git", "Agile / Scrum",
-            ].map((tool) => (
-              <span
-                key={tool}
-                className="font-mono text-xs px-3 py-1 rounded"
-                style={{
-                  border: "1px solid var(--border2)",
-                  color: "var(--muted)",
-                  background: "rgba(255,255,255,0.02)",
-                }}
-              >
-                {tool}
-              </span>
+              {
+                title: "Languages & Data",
+                tools: ["JavaScript", "C#", "SQL"]
+              },
+              {
+                title: "Automation & API",
+                tools: ["Playwright", "Selenium", "Postman", "K6", "Swagger"]
+              },
+              {
+                title: "Tools & Workflow",
+                tools: ["Jira", "Trello", "Git", "Docker", "Beekeeper", "Agile / Scrum"]
+              }
+            ].map((group) => (
+              <div key={group.title} className="flex flex-col">
+                <h4 className="text-[11px] font-medium mb-3 uppercase tracking-wider" style={{ color: "var(--muted)" }}>
+                  {group.title}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {group.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="font-mono text-xs px-3 py-1.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5 cursor-default"
+                      style={{
+                        border: "1px solid var(--border2)",
+                        color: "var(--text)",
+                        background: "rgba(255,255,255,0.01)",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "var(--accent)";
+                        e.currentTarget.style.color = "var(--accent)";
+                        e.currentTarget.style.background = "rgba(0, 212, 255, 0.05)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "var(--border2)";
+                        e.currentTarget.style.color = "var(--text)";
+                        e.currentTarget.style.background = "rgba(255,255,255,0.01)";
+                      }}
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

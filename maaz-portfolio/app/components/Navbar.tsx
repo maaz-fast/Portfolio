@@ -36,10 +36,10 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="font-mono text-sm tracking-widest"
-          style={{ color: "var(--accent)" }}
+          className="font-mono text-sm tracking-widest font-semibold"
+          style={{ color: "var(--text)" }}
         >
-          maaz<span style={{ color: "var(--muted)" }}>.qa</span>
+          Maaz<span style={{ color: "var(--accent)" }}> Imtiaz</span>
         </a>
 
         {/* Desktop links */}
@@ -48,7 +48,7 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="font-mono text-xs tracking-widest uppercase transition-colors duration-200"
+                className="group relative font-mono text-xs tracking-widest uppercase transition-colors duration-200"
                 style={{ color: "var(--muted)" }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.color = "var(--accent)")
@@ -58,6 +58,7 @@ export default function Navbar() {
                 }
               >
                 {l.label}
+                <span className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100] normal-case tracking-normal">Go to {l.label}</span>
               </a>
             </li>
           ))}
@@ -66,7 +67,7 @@ export default function Navbar() {
           <li>
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-md transition-colors duration-200 flex items-center justify-center"
+              className="group relative p-1.5 rounded-md transition-colors duration-200 flex items-center justify-center"
               style={{ color: "var(--muted)", border: "1px solid var(--border)" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.color = "var(--accent)";
@@ -79,6 +80,7 @@ export default function Navbar() {
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+              <span className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100]">Toggle Theme</span>
             </button>
           </li>
         </ul>
@@ -87,7 +89,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <a
             href="#contact"
-            className="btn-3d inline-flex items-center gap-2 font-mono text-xs tracking-wider px-4 py-2 rounded transition-all duration-200"
+            className="group relative btn-3d inline-flex items-center gap-2 font-mono text-xs tracking-wider px-4 py-2 rounded transition-all duration-200"
             style={{
               border: "1px solid var(--accent)",
               color: "var(--accent)",
@@ -101,6 +103,7 @@ export default function Navbar() {
             }}
           >
             Hire me
+            <span className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100] normal-case tracking-normal">Go to Contact</span>
           </a>
         </div>
 
@@ -110,6 +113,7 @@ export default function Navbar() {
             onClick={toggleTheme}
             className="p-1.5 rounded-md"
             style={{ color: "var(--muted)" }}
+            data-tooltip="Toggle theme"
           >
              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </button>
@@ -147,6 +151,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}
           >
             Hire me
+            <span className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100] normal-case tracking-normal">Go to Contact</span>
           </a>
         </div>
       )}

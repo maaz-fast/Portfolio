@@ -4,13 +4,74 @@ import { MapPin, Mail, Phone, Code2, Link2, ArrowDown } from "lucide-react";
 import { personal, stats } from "../data/portfolio";
 
 const terminalLines = [
-  { delay: 0, content: <><span style={{color:"var(--accent3)"}}>$</span> <span style={{color:"var(--text)"}}>run-tests --suite=regression --env=production</span></> },
-  { delay: 600, content: <><span style={{color:"var(--muted)"}}>✓ Functional Tests&nbsp;&nbsp;</span><span style={{color:"var(--accent3)"}}>PASSED (148/148)</span></> },
-  { delay: 900, content: <><span style={{color:"var(--muted)"}}>✓ API Tests&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{color:"var(--accent3)"}}>PASSED (62/62)</span></> },
-  { delay: 1200, content: <><span style={{color:"var(--muted)"}}>✓ UI Automation&nbsp;&nbsp;&nbsp;</span><span style={{color:"var(--accent3)"}}>PASSED (95/95)</span></> },
-  { delay: 1500, content: <><span style={{color:"var(--muted)"}}>✓ Load Tests (K6)&nbsp;&nbsp;</span><span style={{color:"var(--accent3)"}}>PASSED — p95 &lt; 200ms</span></> },
-  { delay: 1900, content: <><span style={{color:"var(--accent)"}}>✔ Coverage: 95%+</span>&nbsp;&nbsp;<span style={{color:"var(--accent2)"}}>Bug reduction: 20%</span></> },
+  { delay: 0, content: <><span style={{ color: "var(--accent3)" }}>$</span> <span style={{ color: "var(--text)" }}>run-tests --suite=regression --env=production</span></> },
+  { delay: 600, content: <><span style={{ color: "var(--muted)" }}>✓ Functional Tests&nbsp;&nbsp;</span><span style={{ color: "var(--accent3)" }}>PASSED (148/148)</span></> },
+  { delay: 900, content: <><span style={{ color: "var(--muted)" }}>✓ API Tests&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{ color: "var(--accent3)" }}>PASSED (62/62)</span></> },
+  { delay: 1200, content: <><span style={{ color: "var(--muted)" }}>✓ UI Automation&nbsp;&nbsp;&nbsp;</span><span style={{ color: "var(--accent3)" }}>PASSED (95/95)</span></> },
+  { delay: 1500, content: <><span style={{ color: "var(--muted)" }}>✓ Load Tests (K6)&nbsp;&nbsp;</span><span style={{ color: "var(--accent3)" }}>PASSED — p95 &lt; 200ms</span></> },
+  { delay: 1900, content: <><span style={{ color: "var(--accent)" }}>✔ Coverage: 95%+</span>&nbsp;&nbsp;<span style={{ color: "var(--accent2)" }}>Bug reduction: 20%</span></> },
 ];
+
+function TypingName() {
+  const text1 = "Muhammad";
+  const text2 = "Maaz Bin Imtiaz";
+  const [displayedText1, setDisplayedText1] = useState("");
+  const [displayedText2, setDisplayedText2] = useState("");
+  const [isTyping1, setIsTyping1] = useState(true);
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    let i = 0;
+    const typeText1 = () => {
+      if (i < text1.length) {
+        setDisplayedText1(text1.substring(0, i + 1));
+        i++;
+        timeout = setTimeout(typeText1, 100);
+      } else {
+        setIsTyping1(false);
+        let j = 0;
+        const typeText2 = () => {
+          if (j < text2.length) {
+            setDisplayedText2(text2.substring(0, j + 1));
+            j++;
+            timeout = setTimeout(typeText2, 100);
+          }
+        };
+        timeout = setTimeout(typeText2, 200);
+      }
+    };
+    timeout = setTimeout(typeText1, 200);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <h1 className="font-bold leading-tight mb-3 relative" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)", letterSpacing: "-0.02em" }}>
+      {/* Invisible placeholder to prevent layout shift */}
+      <div className="invisible" aria-hidden="true">
+        Muhammad<br />
+        Maaz Bin Imtiaz
+      </div>
+      {/* Absolute positioned typing text */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        {displayedText1}
+        {isTyping1 && (
+          <span
+            className="inline-block cursor-blink"
+            style={{ width: "0.06em", height: "0.8em", background: "var(--text)", marginLeft: "4px", verticalAlign: "middle" }}
+          />
+        )}
+        <br />
+        <span className="gradient-text">{displayedText2}</span>
+        {!isTyping1 && displayedText1 === text1 && (
+          <span
+            className="inline-block cursor-blink"
+            style={{ width: "0.06em", height: "0.8em", background: "var(--accent)", marginLeft: "4px", verticalAlign: "middle" }}
+          />
+        )}
+      </div>
+    </h1>
+  );
+}
 
 function Terminal() {
   const [visibleLines, setVisibleLines] = useState<number[]>([]);
@@ -33,7 +94,7 @@ function Terminal() {
         <span className="w-3 h-3 rounded-full bg-red-500 inline-block" />
         <span className="w-3 h-3 rounded-full bg-yellow-400 inline-block" />
         <span className="w-3 h-3 rounded-full bg-green-500 inline-block" />
-        <span className="ml-3 text-xs" style={{color:"var(--muted)"}}>terminal — maaz@qa:~</span>
+        <span className="ml-3 text-xs" style={{ color: "var(--muted)" }}>terminal — maaz@qa:~</span>
       </div>
       <div className="space-y-1">
         {terminalLines.map((line, i) => (
@@ -46,7 +107,7 @@ function Terminal() {
           </div>
         ))}
         <div className="flex items-center gap-1 mt-1">
-          <span style={{color:"var(--accent3)"}}>$</span>
+          <span style={{ color: "var(--accent3)" }}>$</span>
           <span
             className="inline-block w-2 h-4 cursor-blink"
             style={{ background: "var(--accent)", marginLeft: 4 }}
@@ -71,37 +132,45 @@ export default function Hero() {
             {/* Available badge */}
             {personal.availableForWork && (
               <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full text-xs font-mono"
-                style={{ border:"1px solid rgba(16,185,129,0.4)", background:"rgba(16,185,129,0.06)", color:"#10b981" }}>
+                style={{ border: "1px solid rgba(16,185,129,0.4)", background: "rgba(16,185,129,0.06)", color: "#10b981" }}>
                 <span className="w-2 h-2 rounded-full bg-emerald-400 glow-cyan inline-block" />
                 Available for new opportunities
               </div>
             )}
 
             {/* Name */}
-            <h1 className="font-bold leading-tight mb-3" style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)", letterSpacing: "-0.02em" }}>
-              Muhammad<br />
-              <span className="gradient-text">Maaz Bin Imtiaz</span>
-            </h1>
+            <TypingName />
 
             {/* Title */}
-            <p className="font-mono mb-4" style={{ color:"var(--accent3)", fontSize:"1rem" }}>
+            <p className="font-mono mb-4" style={{ color: "var(--accent3)", fontSize: "1rem" }}>
               &lt; {personal.title} / {personal.subtitle} &gt;
             </p>
 
+            {/* Quote */}
+            <blockquote
+              className="border-l-2 pl-4 mb-6 italic text-lg"
+              style={{ borderColor: "var(--accent)", color: "var(--text)" }}
+            >
+
+
+              Delivering confidence with every release.
+            </blockquote>
+
             {/* Bio */}
-            <p className="text-base leading-relaxed mb-8 max-w-lg" style={{ color:"var(--muted)" }}>
+            <p className="text-base leading-relaxed mb-8 max-w-lg" style={{ color: "var(--muted)" }}>
               {personal.bio}
             </p>
 
             {/* Location & contact mini row */}
-            <div className="flex flex-wrap gap-4 mb-8 text-sm" style={{ color:"var(--muted)" }}>
+            <div className="flex flex-wrap gap-4 mb-8 text-sm" style={{ color: "var(--muted)" }}>
               <span className="flex items-center gap-1.5">
-                <MapPin size={14} style={{color:"var(--accent)"}} />
+                <MapPin size={14} style={{ color: "var(--accent)" }} />
                 {personal.location}
               </span>
-              <a href={`mailto:${personal.email}`} className="flex items-center gap-1.5 hover:opacity-80 transition-colors">
-                <Mail size={14} style={{color:"var(--accent)"}} />
+              <a href={`mailto:${personal.email}`} className="group relative flex items-center gap-1.5 hover:opacity-80 transition-colors">
+                <Mail size={14} style={{ color: "var(--accent)" }} />
                 {personal.email}
+                <span className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100]">Send me an email</span>
               </a>
             </div>
 
@@ -110,7 +179,7 @@ export default function Hero() {
               <a
                 href="#experience"
                 className="btn-3d inline-flex items-center gap-2 font-mono text-sm px-5 py-2.5 rounded font-semibold transition-all duration-200"
-                style={{ background:"var(--accent)", color:"var(--card)" }}
+                style={{ background: "var(--accent)", color: "var(--card)" }}
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = "0.9"}
                 onMouseLeave={e => (e.currentTarget as HTMLElement).style.opacity = "1"}
               >
@@ -119,7 +188,7 @@ export default function Hero() {
               <a
                 href="#contact"
                 className="btn-3d inline-flex items-center gap-2 font-mono text-sm px-5 py-2.5 rounded transition-all duration-200"
-                style={{ border:"1px solid var(--accent)", color:"var(--accent)" }}
+                style={{ border: "1px solid var(--accent)", color: "var(--accent)" }}
                 onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "var(--grid-color)"}
                 onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "transparent"}
               >
@@ -130,28 +199,31 @@ export default function Hero() {
             {/* Social links */}
             <div className="flex gap-4">
               <a href={personal.linkedin} target="_blank" rel="noopener noreferrer"
-                className="p-2 rounded transition-colors duration-200"
-                style={{ border:"1px solid var(--border2)", color:"var(--muted)" }}
+                className="group relative p-2 rounded transition-colors duration-200"
+                style={{ border: "1px solid var(--border2)", color: "var(--muted)" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
               >
                 <Link2 size={16} />
+                <span className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100]">LinkedIn Profile</span>
               </a>
               <a href={personal.github} target="_blank" rel="noopener noreferrer"
-                className="p-2 rounded transition-colors duration-200"
-                style={{ border:"1px solid var(--border2)", color:"var(--muted)" }}
+                className="group relative p-2 rounded transition-colors duration-200"
+                style={{ border: "1px solid var(--border2)", color: "var(--muted)" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
               >
                 <Code2 size={16} />
+                <span className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100]">GitHub Profile</span>
               </a>
               <a href={`mailto:${personal.email}`}
-                className="p-2 rounded transition-colors duration-200"
-                style={{ border:"1px solid var(--border2)", color:"var(--muted)" }}
+                className="group relative p-2 rounded transition-colors duration-200"
+                style={{ border: "1px solid var(--border2)", color: "var(--muted)" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
               >
                 <Mail size={16} />
+                <span className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100]">Send an email</span>
               </a>
             </div>
           </div>
@@ -168,7 +240,7 @@ export default function Hero() {
                   className="card-3d rounded-lg p-4 text-center"
                 >
                   <div className="font-mono font-bold text-2xl mb-1 gradient-text">{s.value}</div>
-                  <div className="text-xs" style={{color:"var(--muted)"}}>{s.label}</div>
+                  <div className="text-xs" style={{ color: "var(--muted)" }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -178,7 +250,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <div className="flex justify-center mt-16">
           <a href="#skills" className="flex flex-col items-center gap-2 transition-opacity hover:opacity-70"
-            style={{ color:"var(--muted)" }}>
+            style={{ color: "var(--muted)" }}>
             <span className="font-mono text-xs tracking-widest">scroll</span>
             <ArrowDown size={16} className="animate-bounce" />
           </a>

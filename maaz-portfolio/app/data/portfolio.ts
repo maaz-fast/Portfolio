@@ -8,7 +8,7 @@ export const personal = {
   email: "maazimtiaz3456@gmail.com",
   phone: "+92 331 365 4593",
   linkedin: "https://www.linkedin.com/in/muhammad-maaz-bin-imtiaz/",
-  github: "https://github.com/maazimtiaz3456",
+  github: "https://github.com/maaz-fast",
   availableForWork: true,
 };
 
@@ -67,9 +67,10 @@ export const experience = [
     role: "SQA Engineer",
     company: "Geeks of Kolachi",
     location: "Karachi, Pakistan",
-    period: "Jul 2025 – Present",
+    period: "Aug 2025 – Present",
     type: "Full-time",
     color: "cyan",
+    logo: "https://www.google.com/s2/favicons?domain=geeksofkolachi.com&sz=128",
     bullets: [
       "Wrote and executed 100+ test cases per project, ensuring comprehensive coverage across web, mobile, and API modules.",
       "Reported and tracked 75+ bugs per project using Jira and Trello.",
@@ -89,6 +90,7 @@ export const experience = [
     period: "Mar 2025 – Jul 2025",
     type: "Full-time",
     color: "purple",
+    logo: "https://www.google.com/s2/favicons?domain=tafsol.com&sz=128",
     bullets: [
       "Coordinated with Project Managers to understand project workflows, scope, and gather precise requirements.",
       "Collaborated with Developers to verify bug resolutions and ensure alignment with project goals.",
@@ -110,6 +112,7 @@ export const experience = [
     period: "Sep 2024 – Mar 2025",
     type: "Internship",
     color: "green",
+    logo: "https://www.google.com/s2/favicons?domain=tafsol.com&sz=128",
     bullets: [
       "Coordinated with Project Managers to understand project workflows, scope, and gather precise requirements.",
       "Collaborated with Developers to verify bug resolutions and ensure alignment with project goals.",
@@ -130,6 +133,7 @@ export const experience = [
     period: "Jul 2022 – Aug 2022",
     type: "Internship",
     color: "blue",
+    logo: "https://logo.clearbit.com/proton.com.my",
     bullets: [
       "Gained understanding of core SAP SD processes, including sales order management, pricing, delivery, and billing.",
       "Observed and documented end-to-end sales workflows within SAP.",
