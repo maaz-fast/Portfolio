@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Mail, Phone, Link2, Code2, MapPin, Bug, Terminal, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { Mail, Phone, Code2, MapPin, Bug, Terminal, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 import { personal } from "../data/portfolio";
 import SectionHeader from "./SectionHeader";
 
@@ -18,7 +19,7 @@ const contactItems = [
     href: `tel:${personal.phone.replace(/\s/g, "")}`,
   },
   {
-    icon: <Link2 size={18} />,
+    icon: <FaLinkedin size={18} />,
     label: "LinkedIn",
     value: "muhammad-maaz-bin-imtiaz",
     href: personal.linkedin,
@@ -69,7 +70,7 @@ export default function Contact() {
   return (
     <section id="contact" style={{ background: "var(--bg2)", position: "relative", zIndex: 1 }}>
       <div className="max-w-6xl mx-auto px-6 py-24">
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center px-4 sm:px-0">
           <SectionHeader number="07" label="contact" title="Let's Work Together" />
 
           <p className="text-base leading-relaxed mb-12" style={{ color: "var(--muted)" }}>
@@ -161,7 +162,7 @@ export default function Contact() {
                   name="name"
                   id="name" 
                   placeholder="John Doe" 
-                  className="w-full bg-transparent p-3 rounded-lg text-sm border focus:outline-none transition-all duration-200" 
+                  className="w-full bg-transparent p-3 rounded-lg text-sm border focus:outline-none transition-all duration-200 placeholder:text-[var(--muted)] placeholder:opacity-60" 
                   style={{ borderColor: "var(--border2)", color: "var(--text)" }} 
                   onFocus={(e) => e.target.style.borderColor = "var(--accent)"}
                   onBlur={(e) => e.target.style.borderColor = "var(--border2)"}
@@ -175,7 +176,7 @@ export default function Contact() {
                   name="email"
                   id="email" 
                   placeholder="john@example.com" 
-                  className="w-full bg-transparent p-3 rounded-lg text-sm border focus:outline-none transition-all duration-200" 
+                  className="w-full bg-transparent p-3 rounded-lg text-sm border focus:outline-none transition-all duration-200 placeholder:text-[var(--muted)] placeholder:opacity-60" 
                   style={{ borderColor: "var(--border2)", color: "var(--text)" }} 
                   onFocus={(e) => e.target.style.borderColor = "var(--accent)"}
                   onBlur={(e) => e.target.style.borderColor = "var(--border2)"}
@@ -208,7 +209,7 @@ export default function Contact() {
                 id="message" 
                 rows={4} 
                 placeholder="Describe your project, timeline, and how I can help..." 
-                className="w-full bg-transparent p-3 rounded-lg text-sm border focus:outline-none transition-all duration-200 resize-none font-mono" 
+                className="w-full bg-transparent p-3 rounded-lg text-sm border focus:outline-none transition-all duration-200 resize-none font-mono placeholder:text-[var(--muted)] placeholder:opacity-60" 
                 style={{ borderColor: "var(--border2)", color: "var(--text)" }}
                 onFocus={(e) => e.target.style.borderColor = "var(--accent)"}
                 onBlur={(e) => e.target.style.borderColor = "var(--border2)"}

@@ -5,23 +5,23 @@ import SectionHeader from "./SectionHeader";
 
 const dotColor: Record<string, string> = {
   cyan: "var(--accent)",
-  purple: "var(--accent2)",
-  green: "var(--accent3)",
-  blue: "#3b82f6",
+  purple: "var(--accent)",
+  green: "var(--accent)",
+  blue: "var(--accent)",
 };
 
 const tagColor: Record<string, string> = {
   cyan: "rgba(0,212,255,0.15)",
-  purple: "rgba(124,58,237,0.15)",
-  green: "rgba(16,185,129,0.15)",
-  blue: "rgba(59,130,246,0.15)",
+  purple: "rgba(0,212,255,0.15)",
+  green: "rgba(0,212,255,0.15)",
+  blue: "rgba(0,212,255,0.15)",
 };
 
 const tagText: Record<string, string> = {
   cyan: "var(--accent)",
-  purple: "#a78bfa",
-  green: "var(--accent3)",
-  blue: "#60a5fa",
+  purple: "var(--accent)",
+  green: "var(--accent)",
+  blue: "var(--accent)",
 };
 
 function CompanyLogo({ job }: { job: any }) {
@@ -73,7 +73,7 @@ export default function Experience() {
             }}
           />
 
-          <div className="space-y-12">
+          <div className="space-y-16 sm:space-y-20">
             {experience.map((job) => (
               <div key={job.role + job.company} className="pl-12 relative">
                 {/* Timeline dot */}

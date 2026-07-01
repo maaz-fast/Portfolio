@@ -38,7 +38,7 @@ export const skills = [
   {
     category: "Manual Testing",
     icon: "flask",
-    items: ["Functional Testing", "Regression Testing", "UI/UX Testing", "NSFW Content Testing"],
+    items: ["Functional Testing", "Regression Testing", "UI/UX Testing", "Sensitive Content Testing"],
   },
   {
     category: "Bug Tracking & Management",
@@ -102,7 +102,7 @@ export const experience = [
       "Reviewed UI/UX designs to enhance usability and user experience.",
       "Tested chat modules and payment gateways to ensure secure and seamless user interactions.",
       "Performed API testing using Postman to validate endpoints and ensure secure communication.",
-      "Tested AI chatbots, including NSFW use cases, to verify response accuracy and safe user interactions.",
+      "Tested AI chatbots, including sensitive content use cases, to verify response accuracy and safe user interactions.",
     ],
   },
   {
@@ -188,6 +188,7 @@ export const certifications = [
   { name: "Introduction to API Testing with Postman", issuer: "10Pearls University", logo: "10pearls" },
   { name: "Automation With Selenium Web Driver and TestNg", issuer: "10Pearls University", logo: "10pearls" },
   { name: "QA Fundamentals", issuer: "10Pearls University", logo: "10pearls" },
+  { name: "API Testing and Basic Overview of JMETER", issuer: "10Pearls University", logo: "10pearls" },
 ];
 
 export const education = [

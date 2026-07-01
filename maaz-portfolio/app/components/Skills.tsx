@@ -96,28 +96,22 @@ export default function Skills() {
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {group.tools.map((tool) => (
-                    <span
+                    <div
                       key={tool}
-                      className="font-mono text-xs px-3 py-1.5 rounded-lg transition-all duration-300 hover:-translate-y-0.5 cursor-default"
-                      style={{
-                        border: "1px solid var(--border2)",
-                        color: "var(--text)",
-                        background: "rgba(255,255,255,0.01)",
-                        boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "var(--accent)";
-                        e.currentTarget.style.color = "var(--accent)";
-                        e.currentTarget.style.background = "rgba(0, 212, 255, 0.05)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "var(--border2)";
-                        e.currentTarget.style.color = "var(--text)";
-                        e.currentTarget.style.background = "rgba(255,255,255,0.01)";
-                      }}
+                      className="group relative flex items-center gap-2.5 px-3.5 py-2 rounded-lg border transition-all duration-300 hover:-translate-y-1 cursor-default overflow-hidden card-3d"
+                      style={{ borderColor: "var(--border2)" }}
                     >
-                      {tool}
-                    </span>
+                      {/* Subtle hover gradient background */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent)] to-[var(--accent2)] opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                      
+                      {/* Glowing dot indicator */}
+                      <div className="w-1.5 h-1.5 rounded-full transition-all duration-300 group-hover:glow-cyan" style={{ background: "var(--accent)" }}></div>
+                      
+                      {/* Tool name */}
+                      <span className="font-mono text-[11px] font-semibold tracking-wide transition-colors duration-300 relative z-10" style={{ color: "var(--text)" }}>
+                        {tool}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>

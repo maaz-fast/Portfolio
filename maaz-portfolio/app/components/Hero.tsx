@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { MapPin, Mail, Phone, Code2, Link2, ArrowDown } from "lucide-react";
+import { MapPin, Mail, Phone, ArrowDown } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personal, stats } from "../data/portfolio";
 
 const terminalLines = [
@@ -194,6 +195,23 @@ export default function Hero() {
               >
                 Get in touch
               </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-3d inline-flex items-center gap-2 font-mono text-sm px-5 py-2.5 rounded transition-all duration-200"
+                style={{ border: "1px solid var(--border2)", color: "var(--muted)" }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--text)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--muted)";
+                }}
+              >
+                Resume ↗
+              </a>
             </div>
 
             {/* Social links */}
@@ -204,7 +222,7 @@ export default function Hero() {
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
               >
-                <Link2 size={16} />
+                <FaLinkedin size={16} />
                 <span className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100]">LinkedIn Profile</span>
               </a>
               <a href={personal.github} target="_blank" rel="noopener noreferrer"
@@ -213,7 +231,7 @@ export default function Hero() {
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)"; (e.currentTarget as HTMLElement).style.color = "var(--accent)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border2)"; (e.currentTarget as HTMLElement).style.color = "var(--muted)"; }}
               >
-                <Code2 size={16} />
+                <FaGithub size={16} />
                 <span className="absolute bottom-[calc(100%+8px)] left-1/2 -translate-x-1/2 px-2.5 py-1 block bg-[var(--bg2)] border border-[var(--border2)] text-[var(--text)] text-[11px] font-medium rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap shadow-xl pointer-events-none z-[100]">GitHub Profile</span>
               </a>
               <a href={`mailto:${personal.email}`}

@@ -27,9 +27,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
         background: scrolled ? "var(--bg)" : "transparent",
-        backdropFilter: scrolled ? "blur(14px)" : "none",
         borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-        opacity: scrolled ? 0.95 : 1,
       }}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
